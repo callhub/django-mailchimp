@@ -4,7 +4,7 @@ from django.contrib import messages
 from django.core.urlresolvers import reverse
 from django.core.cache import cache
 from django.contrib.contenttypes.models import ContentType
-from django.utils import simplejson
+import json
 from django.contrib.auth import logout
 from django.contrib.messages import debug, info, success, warning, error, add_message
 from django.http import (
@@ -314,7 +314,7 @@ class BaseView(object):
         return HttpResponseServerError(data)
     
     def simplejson(self, data):
-        return HttpResponse(simplejson.dumps(data), content_type='application/json')
+        return HttpResponse(json.dumps(data), content_type='application/json')
     
     def response(self, data):
         return HttpResponse(data)
